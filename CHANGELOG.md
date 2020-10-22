@@ -1,30 +1,139 @@
 # Changelog
 
-## Version 3.0.0
+## Version 4.2.0
 
-Releasedate: TBD
+Releasedate: 2020-10-21
 
 ```ruby
-pod 'DeviceKit', :git => 'https://github.com/devicekit/DeviceKit.git', :branch => 'master'
+pod 'DeviceKit', '~> 4.2'
+```
+
+This release will add support for the October 2020 devices. ([#262](https://github.com/devicekit/DeviceKit/pull/262))
+
+- iPad Air (4th generation)
+- iPhone 12
+- iPhone 12 mini
+- iPhone 12 Pro
+- iPhone 12 Pro Max
+```swift
+Device.iPadAir4
+
+Device.iPhone12
+Device.iPhone12Mini
+
+Device.iPhone12Pro
+Device.iPhone12ProMax
+```
+
+## Version 4.1.0
+
+Releasedate: 2020-09-21
+
+```ruby
+pod 'DeviceKit', '~> 4.1'
+```
+
+This release will add support for the September 2020 devices, which will be released on the 18th of September: ([#256](https://github.com/devicekit/DeviceKit/pull/256))
+- iPad (8th generation)
+- Apple Watch Series 6
+- Apple Watch SE
+```swift
+Device.iPad8
+
+Device.appleWatchSeries6_40mm
+Device.appleWatchSeries6_44mm
+
+Device.appleWatchSE_40mm
+Device.appleWatchSE_44mm
+```
+
+Support for iPad Air (4th generation) will be added in a later version since it will be a long time before we know its device identifiers.
+
+## Version 4.0.0
+
+Releasedate: 2020-09-04
+
+```ruby
+pod 'DeviceKit', '~> 4.0'
+```
+
+This is a v4.0.0 release because of the possibly breaking change of no longer supporting iOS 9. This decision was made because of Xcode 12 no longer supporting iOS 8.
+
+- Dropped support for iOS 8. Lowest supported version is now iOS 9. ([#249](https://github.com/devicekit/DeviceKit/pull/249))
+- Updated project settings for Xcode 12. ([#248](https://github.com/devicekit/DeviceKit/pull/248))
+
+## Version 3.2.0
+
+Releasedate: 2020-04-29
+
+```ruby
+pod 'DeviceKit', '~> 3.2'
+```
+
+### iPhone SE (2nd generation)
+- Added support for the iPhone SE (2nd generation). ([#238](https://github.com/devicekit/DeviceKit/pull/238))
+```swift
+Device.iPhoneSE2
+```
+
+## Version 3.1.0
+
+Releasedate: 2020-03-29
+
+```ruby
+pod 'DeviceKit', '~> 3.1'
+```
+
+### 2020 iPad Pro
+- Added support for the new 2020 iPad Pro. ([#235](https://github.com/devicekit/DeviceKit/pull/235))
+```swift
+Device.iPadPro11Inch2 // iPad Pro (11-inch) (2nd generation)
+Device.iPadPro12inch4 // iPad Pro (12.9-inch) (4th generation)
+```
+
+### New features
+- Added new functions for detecting LiDAR support.
+  - `Device.allDevicesWithALidarSensor` and `Device.current.hasLidarSensor`
+
+## Version 3.0.0
+
+Releasedate: 2020-01-19
+
+```ruby
+pod 'DeviceKit', '~> 3.0'
 ```
 
 ### Breaking changes
-- The enum for the Apple TV HD has been renamed from `.appleTV4` to `.appleTVHD`. (#211)
+- The enum for the Apple TV HD has been renamed from `.appleTV4` to `.appleTVHD`. ([#211](https://github.com/devicekit/DeviceKit/pull/211))
+- `.allSimulatorXSeriesDevices` has been deprecated and replaced by `.allSimulatorDevicesWithSensorHousing`. ([#212](https://github.com/devicekit/DeviceKit/pull/212))
+- `.allXSeriesDevices` has been deprecated and replaced by `.allDevicesWithSensorHousing`. ([#212](https://github.com/devicekit/DeviceKit/pull/212))
+
+#### Camera
+- `CameraTypes` has been renamed to `CameraType`. ([#212](https://github.com/devicekit/DeviceKit/pull/212))
+- `CameraType.normal` has been deprecated and replaced by `CameraType.wide`. ([#212](https://github.com/devicekit/DeviceKit/pull/212))
+- `.allDevicesWithNormalCamera` has been deprecated and replaced by `.allDevicesWithWideCamera`. ([#212](https://github.com/devicekit/DeviceKit/pull/212))
+- `.hasNormalCamera` has been deprecated and replaced by `.hasWideCamera`. ([#212](https://github.com/devicekit/DeviceKit/pull/212))
 
 ### New features
-- You can now check which devices support wireless charging through the following variables: `Device.allDevicesWithWirelessChargingSupport` and `Device.current.supportsWirelessCharging` (#209)
+- You can now check which devices support wireless charging through the following variables: `Device.allDevicesWithWirelessChargingSupport` and `Device.current.supportsWirelessCharging` ([#209](https://github.com/devicekit/DeviceKit/pull/209))
+- New `.safeDescription` variable that will provide you with a safe version of the `.description` variable. ([#212](https://github.com/devicekit/DeviceKit/pull/212))
+  - Example: "iPhone Xʀ" vs "iPhone XR"
 
-  ## Version 2.3.0
+### Bugfixes
+- `.allDevicesWith3dTouchSupport` contained `.iPhoneSE` which was incorrect. ([#226](https://github.com/devicekit/DeviceKit/pull/226))
+- Some variables would return incorrect values when running on the simulator. ([#227](https://github.com/devicekit/DeviceKit/pull/227))
 
-  Releasedate: 2019-10-02
+## Version 2.3.0
 
-  ```ruby
-  pod 'DeviceKit', '~> 2.3'
-  ```
+Releasedate: 2019-10-02
 
-  ### New devices
-  - Added support for the new september 2019 devices:
-    - iPad (7th generation)
+```ruby
+pod 'DeviceKit', '~> 2.3'
+```
+
+### New devices
+- Added support for the new september 2019 devices:
+  - iPad (7th generation)
 
 ## Version 2.2.0
 
